@@ -1,0 +1,19 @@
+{
+  "name": "programa-estagio",
+  "version": "1.0.0",
+  "description": "![Aiko](imagens/aiko.png)",
+  "main": "index.js",
+  "author": "Remyson Rodrigues <remysonrodrigues@gmail.com>",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Remysonrodrigues/programa-estagio.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Remysonrodrigues/programa-estagio/issues"
+  },
+  "homepage": "https://github.com/Remysonrodrigues/programa-estagio#readme"
+}
