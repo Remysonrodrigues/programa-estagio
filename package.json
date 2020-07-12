@@ -2,7 +2,7 @@
   "name": "programa-estagio",
   "version": "1.0.0",
   "description": "![Aiko](imagens/aiko.png)",
-  "main": "index.js",
+  "main": "dist/server.js",
   "author": "Remyson Rodrigues <remysonrodrigues@gmail.com>",
   "scripts": {
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
