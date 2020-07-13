@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 import { Parada } from './Parada'
 
 @Entity('linhas')
@@ -11,4 +11,10 @@ export class Linha {
 
   @OneToMany(type => Parada, parada => parada.linha)
   paradas: Parada[]
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updateAt: Date
 }

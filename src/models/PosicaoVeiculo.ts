@@ -1,15 +1,24 @@
-import { Entity, Column, OneToOne, JoinColumn } from 'typeorm'
+import { Entity, Column, OneToOne, JoinColumn, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn } from 'typeorm'
 import { Veiculo } from './Veiculo'
 
-@Entity('posicao_veiculos')
+@Entity('posicaoVeiculos')
 export class PosicaoVeiculo {
-  @Column('double')
+  @PrimaryGeneratedColumn()
+  id: number
+
+  @Column('double precision')
   lat: number
 
-  @Column('double')
+  @Column('double precision')
   lon: number
 
   @OneToOne(type => Veiculo)
   @JoinColumn()
   veiculo: Veiculo
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updateAt: Date
 }

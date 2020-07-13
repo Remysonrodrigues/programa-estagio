@@ -1,4 +1,5 @@
 import 'reflect-metadata'
+import './database/connect'
 import express from 'express'
 
 const app = express()

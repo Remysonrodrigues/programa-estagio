@@ -6,8 +6,6 @@
     "username": "postgres",
     "password": "remyson",
     "database": "api",
-    "synchronize": true,
-    "logging": false,
     "entities": [
        "src/models/*.ts"
     ],

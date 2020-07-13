@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 import { Linha } from './Linha'
 
 @Entity('veiculos')
@@ -15,4 +15,10 @@ export class Veiculo {
   @OneToOne(type => Linha)
   @JoinColumn()
   linha: Linha
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updateAt: Date
 }
