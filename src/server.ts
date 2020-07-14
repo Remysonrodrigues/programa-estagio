@@ -1,11 +1,13 @@
 import 'reflect-metadata'
 import './database/connect'
 import express from 'express'
+import bodyParser from 'body-parser'
+import routes from './routes'
 
 const app = express()
 
-app.get('/', (req, res) => {
-  return res.json({ message: 'Hello word!' })
-})
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(routes)
 
-app.listen(3333, () => console.log('Servidor Rodando.'))
+app.listen(3333, () => console.log('Server started at http://localhost:3333'))

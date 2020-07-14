@@ -1,8 +1,8 @@
 import { Entity, Column, OneToOne, JoinColumn, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn } from 'typeorm'
-import { Veiculo } from './Veiculo'
+import Veiculo from './Veiculo'
 
 @Entity('posicaoVeiculos')
-export class PosicaoVeiculo {
+export default class PosicaoVeiculo {
   @PrimaryGeneratedColumn()
   id: number
 
