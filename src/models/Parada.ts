@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToMany } from 'typeorm'
 import Linha from './Linha'
 
 @Entity('paradas')
@@ -15,8 +15,8 @@ export default class Parada {
   @Column('double precision')
   lon: number
 
-  @ManyToOne(type => Linha, linha => linha.paradas, { onDelete: 'CASCADE' })
-  linha: Linha
+  @ManyToMany(type => Linha, linha => linha.paradas, { eager: true })
+  linhas: Linha[]
 
   @CreateDateColumn()
   createdAt: Date
