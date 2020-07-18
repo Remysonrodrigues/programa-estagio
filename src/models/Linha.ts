@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, JoinTable, ManyToMany } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, JoinTable, ManyToMany, OneToMany } from 'typeorm'
 import Parada from './Parada'
+import Veiculo from './Veiculo'
 
 @Entity('linhas')
 export default class Linha {
@@ -13,9 +14,12 @@ export default class Linha {
   @JoinTable()
   paradas: Parada[]
 
-  @CreateDateColumn()
+  @OneToMany(type => Veiculo, veiculo => veiculo.linha, { cascade: true })
+  veiculos: Veiculo[]
+
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updateAt: Date
 }

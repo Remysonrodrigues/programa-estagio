@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm'
 import Linha from './Linha'
+import PosicaoVeiculo from './PosicaoVeiculo'
 
 @Entity('veiculos')
 export default class Veiculo {
@@ -12,13 +13,15 @@ export default class Veiculo {
   @Column()
   modelo: string
 
-  @OneToOne(type => Linha)
-  @JoinColumn()
+  @ManyToOne(type => Linha, linha => linha.veiculos)
   linha: Linha
 
-  @CreateDateColumn()
+  @OneToOne(type => PosicaoVeiculo, posicao => posicao.veiculo, { cascade: true })
+  posicao: PosicaoVeiculo
+
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updateAt: Date
 }

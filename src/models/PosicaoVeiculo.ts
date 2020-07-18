@@ -12,13 +12,13 @@ export default class PosicaoVeiculo {
   @Column('double precision')
   lon: number
 
-  @OneToOne(type => Veiculo)
+  @OneToOne(type => Veiculo, veiculo => veiculo.posicao)
   @JoinColumn()
   veiculo: Veiculo
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updateAt: Date
 }

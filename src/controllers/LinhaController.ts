@@ -30,9 +30,6 @@ class LinhaController {
       const linhaRepository = getRepository(Linha)
 
       const linhas = await linhaRepository.find({ relations: ['paradas'] })
-      if (!linhas) {
-        return res.status(400).json({ message: 'Lines Not Found' })
-      }
 
       linhas.forEach((linha) => {
         linha.paradas.forEach(parada => {
@@ -107,6 +104,24 @@ class LinhaController {
       await linhaRepository.manager.remove(linha)
         .then(() => res.status(204).send())
         .catch(err => res.status(500).send(err))
+    } catch (err) {
+      console.log('error: ' + err.message)
+      return res.status(400).send()
+    }
+  }
+
+  async veiculosPorLinha (req: Request, res: Response) {
+    try {
+      const { id } = req.params
+      const linhaRepository = getRepository(Linha)
+
+      const linha = await linhaRepository
+        .createQueryBuilder('Linha')
+        .leftJoinAndSelect('Linha.veiculos', 'veiculos')
+        .where('Linha.id = :id', { id })
+        .getOne()
+
+      return res.status(200).json(linha.veiculos)
     } catch (err) {
       console.log('error: ' + err.message)
       return res.status(400).send()

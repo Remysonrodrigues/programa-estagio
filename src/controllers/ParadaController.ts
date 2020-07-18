@@ -22,6 +22,7 @@ class ParadaController {
 
       parada.linhas.forEach((lin) => {
         if (lin.name === linha.name) {
+          delete parada.linhas
           return res.status(200).json(parada)
         }
       })
@@ -43,6 +44,10 @@ class ParadaController {
       }
 
       const paradas = linha.paradas
+
+      paradas.forEach(parada => {
+        delete parada.linhas
+      })
 
       return res.status(200).json(paradas)
     } catch (err) {
@@ -75,8 +80,8 @@ class ParadaController {
       }
 
       await linhaRepository.manager.save(linha)
-
-      return res.status(201).send()
+        .then(() => res.status(201).send())
+        .catch(err => res.status(500).send(err))
     } catch (err) {
       console.log('error: ' + err.message)
       return res.status(400).send()

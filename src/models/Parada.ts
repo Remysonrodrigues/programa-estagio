@@ -18,9 +18,9 @@ export default class Parada {
   @ManyToMany(type => Linha, linha => linha.paradas, { eager: true })
   linhas: Linha[]
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updateAt: Date
 }
