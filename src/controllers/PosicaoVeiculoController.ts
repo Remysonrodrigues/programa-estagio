@@ -11,7 +11,7 @@ class PosicaoVeiculoController {
 
       const veiculo = await veiculoRepository.findOne(id, { relations: ['posicao'] })
       if (!veiculo) {
-        return res.status(400).json({ message: 'Vehicle Not Found' })
+        return res.status(404).json({ message: 'Vehicle Not Found' })
       }
 
       return res.status(200).json(veiculo.posicao)
@@ -67,7 +67,7 @@ class PosicaoVeiculoController {
 
       const veiculo = await veiculoRepository.findOne(id, { relations: ['posicao'] })
       if (!veiculo) {
-        return res.status(400).json({ message: 'Vehicle Not Found' })
+        return res.status(404).json({ message: 'Vehicle Not Found' })
       }
 
       if (veiculo.posicao) {
@@ -94,7 +94,7 @@ class PosicaoVeiculoController {
 
       const veiculo = await veiculoRepository.findOne(id, { relations: ['posicao'] })
       if (!veiculo) {
-        return res.status(400).json({ message: 'Vehicle Not Found' })
+        return res.status(404).json({ message: 'Vehicle Not Found' })
       }
 
       if (veiculo.posicao) {

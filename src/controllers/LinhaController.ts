@@ -11,7 +11,7 @@ class LinhaController {
 
       const linha = await linhaRepository.findOne(id, { relations: ['paradas'] })
       if (!linha) {
-        return res.status(400).json({ message: 'Line Not Found' })
+        return res.status(404).json({ message: 'Line Not Found' })
       }
 
       linha.paradas.forEach(parada => {
@@ -69,7 +69,7 @@ class LinhaController {
 
       const linha = await linhaRepository.findOne(id)
       if (!linha) {
-        return res.status(400).json({ message: 'Line Not Found' })
+        return res.status(404).json({ message: 'Line Not Found' })
       }
 
       linha.name = name
@@ -90,7 +90,7 @@ class LinhaController {
 
       const linha = await linhaRepository.findOne(id, { relations: ['paradas'] })
       if (!linha) {
-        return res.status(400).json({ message: 'Line Not Found' })
+        return res.status(404).json({ message: 'Line Not Found' })
       }
 
       if (linha.paradas) {

@@ -11,7 +11,7 @@ class VeiculoController {
 
       const veiculo = await veiculoRepository.findOne(id, { relations: ['linha'] })
       if (!veiculo) {
-        return res.status(400).json({ message: 'Vehicle Not Found' })
+        return res.status(404).json({ message: 'Vehicle Not Found' })
       }
 
       return res.status(200).json(veiculo)
@@ -68,7 +68,7 @@ class VeiculoController {
 
       const veiculo = await veiculoRepository.findOne(id, { relations: ['linha'] })
       if (!veiculo) {
-        return res.status(400).json({ message: 'Vehicle Not Found' })
+        return res.status(404).json({ message: 'Vehicle Not Found' })
       }
 
       veiculo.name = name
@@ -101,7 +101,7 @@ class VeiculoController {
 
       const veiculo = await veiculoRepository.findOne(id)
       if (!veiculo) {
-        return res.status(400).json({ message: 'Vehicle Not Found' })
+        return res.status(404).json({ message: 'Vehicle Not Found' })
       }
 
       await veiculoRepository.manager.remove(veiculo)

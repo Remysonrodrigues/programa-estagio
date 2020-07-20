@@ -11,13 +11,13 @@ class ParadaController {
 
       const linha = await linhaRepository.findOne({ where: { id: linhaId } })
       if (!linha) {
-        return res.status(400).json({ message: 'Line Not Found' })
+        return res.status(404).json({ message: 'Line Not Found' })
       }
 
       const paradaRepository = getRepository(Parada)
       const parada = await paradaRepository.findOne({ where: { id } })
       if (!parada) {
-        return res.status(400).json({ message: 'Stop Not Found' })
+        return res.status(404).json({ message: 'Stop Not Found' })
       }
 
       parada.linhas.forEach((lin) => {
@@ -27,7 +27,7 @@ class ParadaController {
         }
       })
 
-      return res.status(400).json({ message: 'Line does not contain this stop' })
+      return res.status(404).json({ message: 'Line does not contain this stop' })
     } catch (err) {
       console.log('error: ' + err.message)
       return res.status(400).send()
@@ -40,7 +40,7 @@ class ParadaController {
       const linhaRepository = getRepository(Linha)
       const linha = await linhaRepository.findOne(linhaId, { relations: ['paradas'] })
       if (!linha) {
-        return res.status(400).json({ message: 'Line Not Found' })
+        return res.status(404).json({ message: 'Line Not Found' })
       }
 
       const paradas = linha.paradas
@@ -64,7 +64,7 @@ class ParadaController {
 
       const linha = await linhaRepository.findOne(linhaId, { relations: ['paradas'] })
       if (!linha) {
-        return res.status(400).json('Line Not Found')
+        return res.status(404).json('Line Not Found')
       }
 
       const paradaRepository = getRepository(Parada)
@@ -96,7 +96,7 @@ class ParadaController {
 
       const parada = await paradaRepository.findOne(id)
       if (!parada) {
-        return res.status(400).json({ message: 'Stop Not Found' })
+        return res.status(404).json({ message: 'Stop Not Found' })
       }
       parada.name = name
       parada.lat = lat
@@ -118,7 +118,7 @@ class ParadaController {
 
       const parada = paradaRepository.findOne(id)
       if (!parada) {
-        return res.status(400).json({ message: 'Stop Not Found' })
+        return res.status(404).json({ message: 'Stop Not Found' })
       }
 
       await paradaRepository.delete(id)
