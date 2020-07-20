@@ -1,3 +1,11 @@
+## Tecnologias Utilizadas
+
+[NodeJS](https://nodejs.org/en/) 
+[Express](https://expressjs.com/pt-br/) 
+[TypeScript](https://www.typescriptlang.org/) 
+[PostgreSQL](https://www.postgresql.org/) 
+[Typeorm](https://typeorm.io/#/)
+
 # Programa de estágio - 2020-1
 
 ![Aiko](imagens/aiko.png)
