@@ -6,10 +6,6 @@
 [PostgreSQL](https://www.postgresql.org/) 
 [Typeorm](https://typeorm.io/#/)
 
-## Link para o vídeo
-
-[vídeo](https://www.youtube.com/watch?v=G4bFGx4X6iU)
-
 # Programa de estágio - 2020-1
 
 ![Aiko](imagens/aiko.png)
